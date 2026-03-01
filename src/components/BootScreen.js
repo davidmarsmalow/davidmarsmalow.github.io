@@ -1,4 +1,5 @@
 import { setState, STATES } from '../core/state'
+import { playSfx } from '../utils/audio'
 
 export function renderBoot(root) {
   root.innerHTML = `
@@ -17,6 +18,8 @@ export function renderBoot(root) {
   `
 
   const start = () => {
+    playSfx('select')
+
     setState(STATES.MENU)
     location.hash = '#/menu'
     document.removeEventListener('keydown', handleKey)
@@ -48,6 +51,8 @@ export function renderBoot(root) {
   }
 
   async function runBoot() {
+    location.hash = ''
+
     await typeLine(document.getElementById('line1'), 'Initializing system...')
     await typeLine(document.getElementById('line2'), 'Loading profile data...')
     await typeLine(document.getElementById('line3'), 'Preparing experience...')

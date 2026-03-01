@@ -1,4 +1,5 @@
 import { setState, STATES } from '../core/state'
+import { playSfx } from '../utils/audio'
 
 const menuItems = ['about', 'skills', 'projects', 'contact']
 
@@ -11,16 +12,20 @@ export function renderMenu(root) {
   function handleKey(e) {
     if (e.key === 'ArrowDown') {
       selectedIndex = (selectedIndex + 1) % menuItems.length
+      playSfx('move')
       draw(root)
     }
 
     if (e.key === 'ArrowUp') {
       selectedIndex =
         (selectedIndex - 1 + menuItems.length) % menuItems.length
+      playSfx('move')
       draw(root)
     }
 
     if (e.key === 'Enter') {
+      playSfx('select')
+
       location.hash = `#/${menuItems[selectedIndex]}`
       document.removeEventListener('keydown', handleKey)
     }

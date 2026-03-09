@@ -12,7 +12,10 @@ export function renderBoot(root) {
       </div>
 
       <button id="boot-btn" class="boot-button">
-        ▶ PRESS ENTER
+        PRESS
+        <svg class="keycap keycap-enter">
+          <use href="#key-enter"></use>
+        </svg>
       </button>
     </div>
   `

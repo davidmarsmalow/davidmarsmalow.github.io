@@ -1,4 +1,9 @@
+import { INPUT, onInput, clearInputs } from "../core/input"
+
 export function renderAbout(root) {
+  
+  clearInputs()
+
   root.innerHTML = `
     <section class="retro-about">
 
@@ -51,19 +56,19 @@ export function renderAbout(root) {
             <span>Vue.js</span>
           </div>
         </div>
+      </div>
 
-        <p class="back-hint">Press ESC to go back</p>
+      <div class="navigation">
+        Back to Menu
+        <svg class="keycap keycap-esc">
+          <use href="#key-esc"></use>
+        </svg>
       </div>
 
     </section>
   `
 
-  const handleKey = (e) => {
-    if (e.key === 'Escape') {
-      location.hash = '#/menu'
-      document.removeEventListener('keydown', handleKey)
-    }
-  }
-
-  document.addEventListener('keydown', handleKey)
+  onInput(INPUT.BACK, () => {
+    location.hash = "#/menu"
+  })
 }

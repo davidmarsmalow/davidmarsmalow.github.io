@@ -1,3 +1,4 @@
+import { INPUT, onInput, clearInputs } from '../core/input'
 import { setState, STATES } from '../core/state'
 import { playSfx } from '../utils/audio'
 
@@ -9,29 +10,20 @@ export function renderMenu(root) {
   setState(STATES.MENU)
   draw(root)
 
-  function handleKey(e) {
-    if (e.key === 'ArrowDown') {
-      selectedIndex = (selectedIndex + 1) % menuItems.length
-      playSfx('move')
-      draw(root)
-    }
+  onInput(INPUT.DOWN, () => {
+    selectedIndex = (selectedIndex + 1) % menuItems.length
+    draw(root)
+  })
 
-    if (e.key === 'ArrowUp') {
-      selectedIndex =
-        (selectedIndex - 1 + menuItems.length) % menuItems.length
-      playSfx('move')
-      draw(root)
-    }
+  onInput(INPUT.UP, () => {
+    selectedIndex =
+      (selectedIndex - 1 + menuItems.length) % menuItems.length
+    draw(root)
+  })
 
-    if (e.key === 'Enter') {
-      playSfx('select')
-
-      location.hash = `#/${menuItems[selectedIndex]}`
-      document.removeEventListener('keydown', handleKey)
-    }
-  }
-
-  document.addEventListener('keydown', handleKey)
+  onInput(INPUT.CONFIRM, () => {
+    location.hash = `#/${menuItems[selectedIndex]}`
+  })
 }
 
 function draw(root) {
@@ -43,6 +35,18 @@ function draw(root) {
           return `<p>${pointer} ${item.toUpperCase()}</p>`
         })
         .join('')}
+    </div>
+    <div class="navigation">
+      <div class="nav-group">
+        Navigation
+        <svg class="keycap keycap-arrow"><use href="#key-up"></use></svg>
+        <svg class="keycap keycap-arrow"><use href="#key-down"></use></svg>
+      </div>
+
+      <div class="nav-group">
+        Select
+        <svg class="keycap keycap-enter"><use href="#key-enter"></use></svg>
+      </div>
     </div>
   `
 }

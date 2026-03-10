@@ -34,6 +34,14 @@
   --color-text-secondary: #94A3B8;
 
   /* ========================
+     STATUS COLORS (Retro Neon)
+  ======================== */
+
+   --color-green: #4ADE80;
+   --color-yellow: #FBBE24;
+   --color-red:  #F87171;
+
+  /* ========================
      FONTS
   ======================== */
 

@@ -1,3 +1,5 @@
+import { playSfx } from '../utils/audio'
+
 const listeners = {}
 
 export const INPUT = {
@@ -50,5 +52,20 @@ document.addEventListener("keydown", (e) => {
 
   const handler = listeners[action]
 
-  if (handler) handler(e)
+  if (handler) {
+    if (
+      action === INPUT.UP ||
+      action === INPUT.DOWN ||
+      action === INPUT.LEFT ||
+      action === INPUT.RIGHT
+    ) {
+      playSfx('move')
+    }
+
+    if (action === INPUT.CONFIRM) {
+      playSfx('select')
+    }
+    
+    handler(e)
+  }
 })

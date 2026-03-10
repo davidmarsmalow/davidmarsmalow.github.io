@@ -1,7 +1,7 @@
 import { INPUT, onInput, clearInputs } from "../core/input"
 
 export function renderAbout(root) {
-  
+
   clearInputs()
 
   root.innerHTML = `
@@ -57,15 +57,13 @@ export function renderAbout(root) {
           </div>
         </div>
       </div>
-
-      <div class="navigation">
-        Back to Menu
-        <svg class="keycap keycap-esc">
-          <use href="#key-esc"></use>
-        </svg>
-      </div>
-
     </section>
+    <div class="navigation">
+      <div class="nav-group">
+        Back to Menu
+        <svg class="keycap keycap-esc"> <use href="#key-esc"></use></svg>
+      </div>
+    </div>
   `
 
   onInput(INPUT.BACK, () => {

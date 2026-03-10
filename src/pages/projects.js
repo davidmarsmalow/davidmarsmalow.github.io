@@ -2,7 +2,7 @@ import { PROJECTS } from "../data/projects"
 import { INPUT, onInput, clearInputs } from "../core/input"
 
 let selectedIndex = 0
-const columns = 2
+const columns = 3
 
 export function renderProjects(root) {
 
@@ -10,15 +10,24 @@ export function renderProjects(root) {
 
   root.innerHTML = `
     <div class="projects-screen">
-      <h1 class="title">SELECT PROJECT</h1>
+      <h1>SELECT PROJECT</h1>
 
       <div class="projects-wrapper">
         <div class="projects-grid">
           ${PROJECTS.map((project, i) => `
             <div class="project-card ${i === selectedIndex ? "active" : ""}" data-index="${i}">
-              <div class="project-icon">🖥</div>
-              <div class="project-name">${project.name}</div>
-              <div class="project-stack">${project.stack.join(" • ")}</div>
+              <div class="project-preview">
+                <div class="project-status status-${project.status.toLowerCase().replace(" ", "-")}">
+                  ${project.status}
+                </div>
+                <div class="project-icon">${project.icon || '🖥'}</div>
+              </div>
+              <div class="project-info">
+                <div class="project-name">${project.name}</div>
+                <div class="project-tags">
+                  ${project.stack.map(tech => `<span class="tag">${tech}</span>`).join("")}
+                </div>
+              </div>
             </div>
           `).join("")}
         </div>
@@ -55,6 +64,10 @@ export function renderProjects(root) {
   const track = thumb.parentElement
 
   function updateScrollbar() {
+    const isScrollable = grid.scrollHeight > grid.clientHeight;
+    track.style.display = isScrollable ? "block" : "none";
+    
+    if (!isScrollable) return;
 
     const visibleRatio =
       grid.clientHeight / grid.scrollHeight
@@ -84,8 +97,7 @@ export function renderProjects(root) {
 function attachControls(root) {
 
   onInput(INPUT.RIGHT, () => {
-    if ((selectedIndex + 1) % columns !== 0 &&
-        selectedIndex + 1 < PROJECTS.length) {
+    if (selectedIndex + 1 < PROJECTS.length) {
       selectedIndex++
     }
 
@@ -93,7 +105,7 @@ function attachControls(root) {
   })
 
   onInput(INPUT.LEFT, () => {
-    if (selectedIndex % columns !== 0) {
+    if (selectedIndex > 0) {
       selectedIndex--
     }
 
@@ -103,6 +115,8 @@ function attachControls(root) {
   onInput(INPUT.DOWN, () => {
     if (selectedIndex + columns < PROJECTS.length) {
       selectedIndex += columns
+    } else {
+      selectedIndex = PROJECTS.length - 1
     }
 
     updateSelection(root)

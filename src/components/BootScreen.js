@@ -3,7 +3,7 @@ import { playSfx } from '../utils/audio'
 
 export function renderBoot(root) {
   root.innerHTML = `
-    <div id="boot">
+    <div class="boot">
       <div class="boot-lines">
         <p id="line1"></p>
         <p id="line2"></p>

@@ -1,6 +1,5 @@
 import { INPUT, onInput, clearInputs } from '../core/input'
 import { setState, STATES } from '../core/state'
-import { playSfx } from '../utils/audio'
 
 const menuItems = ['about', 'skills', 'projects', 'contact']
 
@@ -28,7 +27,7 @@ export function renderMenu(root) {
 
 function draw(root) {
   root.innerHTML = `
-    <div id="menu">
+    <div class="menu">
       ${menuItems
         .map((item, index) => {
           const pointer = index === selectedIndex ? '>' : '&nbsp;'

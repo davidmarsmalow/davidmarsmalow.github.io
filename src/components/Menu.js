@@ -7,6 +7,9 @@ let selectedIndex = 0
 
 export function renderMenu(root) {
   setState(STATES.MENU)
+
+  clearInputs()
+
   draw(root)
 
   onInput(INPUT.DOWN, () => {

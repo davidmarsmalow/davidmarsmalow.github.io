@@ -130,6 +130,23 @@ body {
   padding-left: 60px;
 }
 
+.menu-pointer {
+  display: inline-block;
+}
+
+.menu-pointer:not(.empty) {
+  animation: pointerMove 0.5s infinite alternate;
+}
+
+@keyframes pointerMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(4px);
+  }
+}
+
 /* About Page */
 
 .retro-about {

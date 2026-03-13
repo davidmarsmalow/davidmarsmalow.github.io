@@ -33,7 +33,9 @@ function draw(root) {
     <div class="menu">
       ${menuItems
         .map((item, index) => {
-          const pointer = index === selectedIndex ? '>' : '&nbsp;'
+          const pointer = index === selectedIndex
+            ? '<span class="menu-pointer">></span>' 
+            : '<span class="menu-pointer empty">&nbsp;</span>'
           return `<p>${pointer} ${item.toUpperCase()}</p>`
         })
         .join('')}

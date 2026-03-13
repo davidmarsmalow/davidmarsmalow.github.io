@@ -1,4 +1,4 @@
-import { renderBoot } from '../components/BootScreen'
+import { renderBoot } from '../components/Bootscreen'
 import { renderMenu } from '../components/Menu'
 import { renderRoute } from './router'
 

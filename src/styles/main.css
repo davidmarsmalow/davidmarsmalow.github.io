@@ -242,6 +242,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 12px;
+  width: 100%;
 }
 
 .projects-grid {
@@ -278,7 +279,7 @@ body {
 .project-card {
   height: 140px;
   border: 3px solid var(--color-bg-surface);
-  padding: 20px;
+  padding: 20px 16px 24px;
   background: var(--color-bg-panel);
   transition: 0.15s;
   display: flex;
@@ -289,7 +290,7 @@ body {
 }
 
 .project-card.active {
-  border: 2px solid var(--color-primary);
+  border: 3px solid var(--color-primary);
   box-shadow: 0 0 12px var(--color-primary-glow);
   transform: scale(1.05);
   z-index: 10;
@@ -300,6 +301,7 @@ body {
   top: 8px;
   right: 8px;
   font-size: 6px;
+  margin-bottom: 10px;
   padding: 2px 4px;
   color: var(--color-primary);
   opacity: 0.3;
@@ -320,6 +322,11 @@ body {
   border: 1px solid var(--color-yellow);
 }
 
+.project-name {
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -336,6 +343,10 @@ body {
   color: var(--color-text-main);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.project-icon {
+  margin: 10px 0;
 }
 
 .project-card.active .project-icon {
@@ -373,7 +384,7 @@ body {
 
 /* PANELS */
 
-.project-info,
+.project-detail .project-info,
 .project-overview,
 .project-features {
   border: 3px solid #fff;
@@ -400,10 +411,6 @@ body {
 .project-detail .project-info p {
   font-size: 10px;
   margin: 6px 0;
-}
-
-.project-detail  .project-info span {
-  color: #facc15;
 }
 
 /* OVERVIEW */

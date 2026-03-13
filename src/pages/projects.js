@@ -22,7 +22,7 @@ export function renderProjects(root) {
                 </div>
                 <div class="project-icon">${project.icon || '🖥'}</div>
               </div>
-              <div class="project-info">
+              <div>
                 <div class="project-name">${project.name}</div>
                 <div class="project-tags">
                   ${project.stack.map(tech => `<span class="tag">${tech}</span>`).join("")}

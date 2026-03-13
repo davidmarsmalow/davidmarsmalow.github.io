@@ -2,6 +2,8 @@ import { setState, STATES } from '../core/state'
 import { playSfx } from '../utils/audio'
 
 export function renderBoot(root) {
+  let bootReady = false
+
   root.innerHTML = `
     <div class="boot">
       <div class="boot-lines">
@@ -21,6 +23,8 @@ export function renderBoot(root) {
   `
 
   const start = () => {
+    if (!bootReady) return
+    
     playSfx('select')
 
     setState(STATES.MENU)
@@ -60,6 +64,8 @@ export function renderBoot(root) {
     await typeLine(document.getElementById('line2'), 'Loading profile data...')
     await typeLine(document.getElementById('line3'), 'Preparing experience...')
     await typeLine(document.getElementById('line4'), 'System Ready.')
+
+    bootReady = true
 
     document.getElementById('boot-btn').classList.add('show')
   }

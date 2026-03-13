@@ -1,5 +1,5 @@
-import { PROJECTS } from "../data/projects"
 import { INPUT, onInput, clearInputs } from "../core/input"
+import { PROJECTS } from "../data/projects"
 
 let selectedIndex = 0
 const columns = 3
@@ -37,24 +37,24 @@ export function renderProjects(root) {
         </div>
       </div>
 
-      <div class="navigation">
-        <div class="nav-group">
-          Navigation
-          <svg class="keycap keycap-arrow"><use href="#key-up"></use></svg>
-          <svg class="keycap keycap-arrow"><use href="#key-down"></use></svg>
-          <svg class="keycap keycap-arrow"><use href="#key-left"></use></svg>
-          <svg class="keycap keycap-arrow"><use href="#key-right"></use></svg>
-        </div>
+    </div>
+    <div class="navigation">
+      <div class="nav-group">
+        Navigation
+        <svg class="keycap keycap-arrow"><use href="#key-up"></use></svg>
+        <svg class="keycap keycap-arrow"><use href="#key-down"></use></svg>
+        <svg class="keycap keycap-arrow"><use href="#key-left"></use></svg>
+        <svg class="keycap keycap-arrow"><use href="#key-right"></use></svg>
+      </div>
 
-        <div class="nav-group">
-          Select
-          <svg class="keycap keycap-enter"><use href="#key-enter"></use></svg>
-        </div>
+      <div class="nav-group">
+        Select
+        <svg class="keycap keycap-enter"><use href="#key-enter"></use></svg>
+      </div>
 
-        <div class="nav-group">
-          Back
-          <svg class="keycap keycap-esc"><use href="#key-esc"></use></svg>
-        </div>
+      <div class="nav-group">
+        Back
+        <svg class="keycap keycap-esc"><use href="#key-esc"></use></svg>
       </div>
     </div>
   `
@@ -153,9 +153,5 @@ function updateSelection(root) {
 
 function openProject() {
   const project = PROJECTS[selectedIndex]
-
-  console.log("OPEN PROJECT:", project.name)
-
-  // nanti bisa ganti state
-  // setState(STATES.PROJECT_DETAIL)
+  location.hash = "#/projects/" + project.id
 }

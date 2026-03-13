@@ -1,18 +1,26 @@
 import { renderAbout } from '../pages/about'
-// import { renderSkills } from '../pages/skills'
 import { renderProjects } from '../pages/projects'
-// import { renderContact } from '../pages/contact'
+import { renderProjectDetail } from "../pages/projectDetail"
 
 const routes = {
   about: renderAbout,
-//   skills: renderSkills,
   projects: renderProjects,
-//   contact: renderContact,
 }
 
 export function renderRoute(root) {
-  const route = location.hash.replace('#/', '')
-  const page = routes[route]
+  const hash = location.hash.replace('#/', '')
+  const segments = hash.split('/')
+
+  const mainRoute = segments[0]
+  const param = segments[1]
+
+  if (mainRoute === 'projects' && param) {
+    root.innerHTML = ''
+    renderProjectDetail(root, param)
+    return
+  }
+
+  const page = routes[mainRoute]
 
   if (page) {
     root.innerHTML = ''

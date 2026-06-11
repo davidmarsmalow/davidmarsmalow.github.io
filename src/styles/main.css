@@ -480,3 +480,63 @@ body {
   background: white;
   color: black;
 }
+
+/* SKILL */
+
+.skills-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.skills-title {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+/* Tree Layout */
+
+.skill-tree {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Branch */
+
+.branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Nodes */
+
+.node {
+  border: 2px solid var(--color-bg-surface);
+  padding: 6px 14px;
+  font-size: 11px;
+  background: var(--color-bg-panel);
+  text-align: center;
+  min-width: 90px;
+  transition: 0.2s;
+}
+
+/* Root Node */
+
+.node.root {
+  background: var(--color-secondary-glow);
+  color: var(--color-text-main);
+  font-weight: bold;
+}
+
+/* Hover effect */
+
+.node:hover {
+  background: var(--color-secondary-glow);
+  color: var(--color-text-main);
+  transform: scale(1.05);
+}

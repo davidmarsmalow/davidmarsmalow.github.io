@@ -1,9 +1,11 @@
 import { renderAbout } from '../pages/about'
+import { renderSkills } from '../pages/skills'
 import { renderProjects } from '../pages/projects'
 import { renderProjectDetail } from "../pages/projectDetail"
 
 const routes = {
   about: renderAbout,
+  skills: renderSkills,
   projects: renderProjects,
 }
 
